@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Items</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>HOME</string>
+			<key>tag</key>
+			<string>0</string>
+			<key>Image</key>
+			<string>ic_home</string>
+		</dict>
+		<dict>
+			<key>tag</key>
+			<string>1</string>
+			<key>Image</key>
+			<string>ic_music-note-black-symbol</string>
+			<key>Name</key>
+			<string>BROWSE MUSIC</string>
+		</dict>
+		<dict>
+			<key>tag</key>
+			<string>2</string>
+			<key>Image</key>
+			<string>ic_download-arrow</string>
+			<key>Name</key>
+			<string>MY LIBRARY</string>
+		</dict>
+		<dict>
+			<key>tag</key>
+			<string>3</string>
+			<key>Image</key>
+			<string>ic_dollar-sign</string>
+			<key>Name</key>
+			<string>TIPS RECEIVED</string>
+		</dict>
+	</array>
+</dict>
+</plist>

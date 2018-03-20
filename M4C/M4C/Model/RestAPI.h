@@ -13,5 +13,7 @@
 #define                          LOGIN              @"https://dev.musicforchange.us/wp-json/isas/login"
 #define                          REGISTER           @"https://dev.musicforchange.us/wp-json/isas/register"
 #define                          HOME               @"https://dev.musicforchange.us/wp-json/isas/home-page"
+#define                          SEARCH             @"https://dev.musicforchange.us/wp-json/isas/search?keyword"
+#define                          BROWSE             @"https://dev.musicforchange.us/wp-json/isas/browse-music"
 
 #endif /* RestAPI_h */

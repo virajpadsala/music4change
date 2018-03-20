@@ -18,6 +18,10 @@ class HomeScreenViewController: UIViewController {
     @IBOutlet weak var txtSearchMusic: UITextField!
     @IBOutlet weak var btnSearch: UIButton!
     var isSearched : Bool! = false
+    var strBrowse = String()
+    var URLHOME = String()
+
+    
     
     var hud = MBProgressHUD()
     var arrHomeScreenList = NSMutableArray()
@@ -51,8 +55,15 @@ class HomeScreenViewController: UIViewController {
     }
     
     func getHomeScreenData()  {
-        
+
         hud = MBProgressHUD .showAdded(to: self.view, animated: true)
+        
+        if strBrowse == "Browse" {
+            URLHOME = BROWSE
+        }else{
+            URLHOME = HOME
+        }
+
 
         
         let manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
@@ -73,10 +84,6 @@ class HomeScreenViewController: UIViewController {
                     }
                     print(self.homedata)
                     
-//                    UserDefaults.standard.set(self.homedata, forKey: "SearchDate")
-//                    UserDefaults.standard.synchronize()
-                    
-       
                     self.homefeedtableview.reloadData()
                     
                 }
@@ -97,15 +104,49 @@ class HomeScreenViewController: UIViewController {
     }
     
     
-    @IBAction func txtSearchChanged(_ sender: Any) {        
+    @IBAction func txtSearchChanged(_ sender: Any) {
         
-        self.homesearchdata = (self.txtSearchMusic.text?.isEmpty)! ? homedata : homedata.filter({(dataString: NSDictionary) -> Bool in
-            // If dataItem matches the searchText, return true to include it
-            return (dataString["title"] as! String).range(of: self.txtSearchMusic.text!, options: .caseInsensitive) != nil
-        })
-        self.homefeedtableview.reloadData()
+        var URLSearch = String()
+        URLSearch = SEARCH + "=\(txtSearchMusic.text!)"
+        
+        let manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
+        manager.securityPolicy.allowInvalidCertificates = true
+        manager.securityPolicy.validatesDomainName  = false
+        manager.requestSerializer = AFJSONRequestSerializer()
+        manager.get(URLSearch, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+            if let jsonResponse = responseObject as? NSDictionary {
+                // here read response
+                self.hud .hide(animated: true)
+                
+                
+                if jsonResponse.value(forKey: "errorMsg") as! String == "" {
+                    
+                    if let arr = jsonResponse.value(forKey: "data") as? [NSDictionary]
+                        
+                    {
+                        self.homesearchdata = arr;
+                    }
+                    print(self.homesearchdata)
+                    self.homefeedtableview.reloadData()
+                }
+                else{
+                    let alert = UIAlertView(title: "Oops!", message: jsonResponse.value(forKeyPath: "errorMsg")! as? String, delegate:nil, cancelButtonTitle: "Ok")
+                    alert.show()
+                    
+                }
+            }
+            
+            
+            
+        }) { (task: URLSessionDataTask?, error: Error) in
+            self.hud .hide(animated: true)
+            print("POST fails with error \(error)")
+        }
 
     }
+    
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -160,7 +201,7 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? HomeCell
         
-        var dict = homedata[indexPath.row]
+        var dict = NSDictionary()
         if self.isSearched{
             dict = homesearchdata[indexPath.row]
         }
@@ -183,7 +224,7 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
         
         if dict.value(forKey: "target") != nil ,dict.value(forKey: "tip") != nil
         {
-            let str = "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)")) of $\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "target")!)"))"
+            let str = "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)")) in Tips"
             let attributedString = NSMutableAttributedString(string:str)
             let range = (str as NSString).range(of: "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)"))")
             attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.hexa("3ba250", alpha: 1.0), range: range)

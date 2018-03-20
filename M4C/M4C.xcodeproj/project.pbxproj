@@ -19,6 +19,9 @@
 		4B11764D205F805E00451CBE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B11764C205F805E00451CBE /* SearchTableViewCell.swift */; };
 		4B1C31282057C68400A7F49B /* CommanUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C31272057C68400A7F49B /* CommanUntil.swift */; };
 		4B5B8685205691CC0052F041 /* SecondSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B8684205691CC0052F041 /* SecondSplashViewController.swift */; };
+		4B950383206101800018FC76 /* SideMenu.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4B950382206101800018FC76 /* SideMenu.plist */; };
+		4B950389206104330018FC76 /* MenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950388206104330018FC76 /* MenuListTableViewCell.swift */; };
+		4B95038B206116980018FC76 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B95038A206116980018FC76 /* HomeNavigationViewController.swift */; };
 		EEAD12D0CC58784025413E7C /* Pods_M4C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4615BEBDE3BF4A6DA8495DBB /* Pods_M4C.framework */; };
 		F84C3FC02060E74C0014EC76 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */; };
 		F8E4C4DE2057A408006DACA8 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */; };
@@ -57,6 +60,9 @@
 		4B11764C205F805E00451CBE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		4B1C31272057C68400A7F49B /* CommanUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanUntil.swift; sourceTree = "<group>"; };
 		4B5B8684205691CC0052F041 /* SecondSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSplashViewController.swift; sourceTree = "<group>"; };
+		4B950382206101800018FC76 /* SideMenu.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SideMenu.plist; sourceTree = "<group>"; };
+		4B950388206104330018FC76 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
+		4B95038A206116980018FC76 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		9F44E836B09FAB0185586C6F /* Pods-M4C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M4C.release.xcconfig"; path = "Pods/Target Support Files/Pods-M4C/Pods-M4C.release.xcconfig"; sourceTree = "<group>"; };
 		F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -112,7 +118,6 @@
 				F8E4C4CE2057A383006DACA8 /* Controller */,
 				F8E4C4D02057A383006DACA8 /* Custom Classes */,
 				F8E4C4CF2057A383006DACA8 /* Model */,
-				F8E4C4CD2057A382006DACA8 /* Third Party */,
 				F8E4C4D12057A384006DACA8 /* View */,
 				2F6A848C2054E6C6001F5B80 /* AppDelegate.swift */,
 				2F6A84982054E6C7001F5B80 /* Info.plist */,
@@ -145,6 +150,7 @@
 			children = (
 				4B11764B205F803A00451CBE /* cell */,
 				4B117649205F723B00451CBE /* SearchScreenViewController.swift */,
+				4B95038A206116980018FC76 /* HomeNavigationViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -155,6 +161,14 @@
 				4B11764C205F805E00451CBE /* SearchTableViewCell.swift */,
 			);
 			path = cell;
+			sourceTree = "<group>";
+		};
+		4B9503842061039A0018FC76 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4B950388206104330018FC76 /* MenuListTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		5D6C1E81D6FF65D95C7E79B4 /* Pods */ = {
@@ -177,16 +191,11 @@
 		F84C3FBE2060E6EF0014EC76 /* Side Menu */ = {
 			isa = PBXGroup;
 			children = (
+				4B9503842061039A0018FC76 /* Cell */,
+				4B950382206101800018FC76 /* SideMenu.plist */,
 				F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */,
 			);
 			path = "Side Menu";
-			sourceTree = "<group>";
-		};
-		F8E4C4CD2057A382006DACA8 /* Third Party */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Third Party";
 			sourceTree = "<group>";
 		};
 		F8E4C4CE2057A383006DACA8 /* Controller */ = {
@@ -306,6 +315,7 @@
 			files = (
 				2F6A84972054E6C6001F5B80 /* LaunchScreen.storyboard in Resources */,
 				2F6A84942054E6C6001F5B80 /* Assets.xcassets in Resources */,
+				4B950383206101800018FC76 /* SideMenu.plist in Resources */,
 				2F6A84922054E6C6001F5B80 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,7 +415,9 @@
 				2F6A84A72054E8A2001F5B80 /* RegisterScreenViewController.swift in Sources */,
 				F8E4C4E82057A409006DACA8 /* UIColor.swift in Sources */,
 				F8E4C4E22057A409006DACA8 /* customImageView.swift in Sources */,
+				4B950389206104330018FC76 /* MenuListTableViewCell.swift in Sources */,
 				4B11764D205F805E00451CBE /* SearchTableViewCell.swift in Sources */,
+				4B95038B206116980018FC76 /* HomeNavigationViewController.swift in Sources */,
 				2F6A84AE2054F1AA001F5B80 /* HomeScreenViewController.swift in Sources */,
 				4B5B8685205691CC0052F041 /* SecondSplashViewController.swift in Sources */,
 			);
