@@ -20,6 +20,7 @@
 		4B1C31282057C68400A7F49B /* CommanUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C31272057C68400A7F49B /* CommanUntil.swift */; };
 		4B5B8685205691CC0052F041 /* SecondSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B8684205691CC0052F041 /* SecondSplashViewController.swift */; };
 		EEAD12D0CC58784025413E7C /* Pods_M4C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4615BEBDE3BF4A6DA8495DBB /* Pods_M4C.framework */; };
+		F84C3FC02060E74C0014EC76 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */; };
 		F8E4C4DE2057A408006DACA8 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */; };
 		F8E4C4DF2057A408006DACA8 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D32057A407006DACA8 /* NSObject.swift */; };
 		F8E4C4E02057A409006DACA8 /* UIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D42057A407006DACA8 /* UIFonts.swift */; };
@@ -57,6 +58,7 @@
 		4B1C31272057C68400A7F49B /* CommanUntil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommanUntil.swift; sourceTree = "<group>"; };
 		4B5B8684205691CC0052F041 /* SecondSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSplashViewController.swift; sourceTree = "<group>"; };
 		9F44E836B09FAB0185586C6F /* Pods-M4C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M4C.release.xcconfig"; path = "Pods/Target Support Files/Pods-M4C/Pods-M4C.release.xcconfig"; sourceTree = "<group>"; };
+		F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		F8E4C4D32057A407006DACA8 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
 		F8E4C4D42057A407006DACA8 /* UIFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFonts.swift; sourceTree = "<group>"; };
@@ -172,6 +174,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F84C3FBE2060E6EF0014EC76 /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */,
+			);
+			path = "Side Menu";
+			sourceTree = "<group>";
+		};
 		F8E4C4CD2057A382006DACA8 /* Third Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +192,7 @@
 		F8E4C4CE2057A383006DACA8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F84C3FBE2060E6EF0014EC76 /* Side Menu */,
 				2F6A84A82054E8AA001F5B80 /* Login */,
 				2F6A84AC2054F17B001F5B80 /* Home */,
 				4B117648205F71FD00451CBE /* Search */,
@@ -385,6 +396,7 @@
 				F8E4C4E02057A409006DACA8 /* UIFonts.swift in Sources */,
 				F8E4C4E62057A409006DACA8 /* CustomLabel.swift in Sources */,
 				F8E4C4F32057A418006DACA8 /* PGlobalUtills.swift in Sources */,
+				F84C3FC02060E74C0014EC76 /* SideMenuViewController.swift in Sources */,
 				F8E4C4DE2057A408006DACA8 /* CustomTabBarController.swift in Sources */,
 				F8E4C4E72057A409006DACA8 /* CustomView.swift in Sources */,
 				F8E4C4DF2057A408006DACA8 /* NSObject.swift in Sources */,
