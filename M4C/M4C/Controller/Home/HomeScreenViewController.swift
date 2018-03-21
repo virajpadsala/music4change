@@ -11,7 +11,7 @@ import SWRevealViewController
 import MBProgressHUD
 import AFNetworking
 
-class HomeScreenViewController: UIViewController {
+class HomeScreenViewController: UIViewController, UITextFieldDelegate, SWRevealViewControllerDelegate {
 
     @IBOutlet var btnMenu: UIButton!
     @IBOutlet var homefeedtableview: UITableView!
@@ -47,7 +47,7 @@ class HomeScreenViewController: UIViewController {
         
         if self.revealViewController() != nil {
             
-            
+            self.revealViewController().delegate = self
             btnMenu.addTarget(self.revealViewController(), action:#selector(SWRevealViewController.revealToggle(_:)) , for:.touchUpInside)
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
@@ -103,17 +103,24 @@ class HomeScreenViewController: UIViewController {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.txtSearchChanged(textField)
+        return true
+    }
     
     @IBAction func txtSearchChanged(_ sender: Any) {
         
         var URLSearch = String()
         URLSearch = SEARCH + "=\(txtSearchMusic.text!)"
-        
+        let urlString = URLSearch.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+        hud = MBProgressHUD .showAdded(to: self.view, animated: true)
+
         let manager = AFHTTPSessionManager(sessionConfiguration: URLSessionConfiguration.default)
         manager.securityPolicy.allowInvalidCertificates = true
         manager.securityPolicy.validatesDomainName  = false
         manager.requestSerializer = AFJSONRequestSerializer()
-        manager.get(URLSearch, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
+        manager.get(urlString!, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, responseObject: Any?) in
             if let jsonResponse = responseObject as? NSDictionary {
                 // here read response
                 self.hud .hide(animated: true)
@@ -158,18 +165,28 @@ class HomeScreenViewController: UIViewController {
             isSearched = false
             self.txtSearchMusic.isHidden = true
             self.txtSearchMusic.text = ""
+            self.txtSearchMusic.resignFirstResponder()
             self.btnSearch.setImage(UIImage.init(named: "ic_search"), for: .normal)
         }
         else{
             isSearched = true
             self.txtSearchMusic.isHidden = false
             self.txtSearchMusic.text = ""
+            self.txtSearchMusic.becomeFirstResponder()
             self.btnSearch.setImage(UIImage.init(named: "close_white"), for: .normal)
             self.homesearchdata = self.homedata
         }
         self.homefeedtableview.reloadData()
     }
-    
+        
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
+        if (self.revealViewController().frontViewPosition != FrontViewPosition.left) {
+            btnMenu.setImage(UIImage.init(named: "ic_menu"), for: .normal)
+        }
+        else{
+            btnMenu.setImage(UIImage.init(named: "close_white"), for: .normal)
+        }
+    }
     
     // MARK: - Navigation
 
@@ -192,8 +209,34 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isSearched{
+            if self.homesearchdata.isEmpty {
+                let noItemLabel = UILabel() //no need to set frame.
+                noItemLabel.textAlignment = .center
+                noItemLabel.textColor = .white
+                noItemLabel.numberOfLines = 0
+                noItemLabel.text = NSLocalizedString("No Results Available", comment: "No data Found")
+                tableView.backgroundView = noItemLabel
+                tableView.separatorStyle = .none
+            }
+            else{
+                tableView.separatorStyle = .singleLine
+            }
+            tableView.backgroundView?.isHidden = !self.homesearchdata.isEmpty
             return self.homesearchdata.count;
         }
+        if self.homedata.isEmpty {
+            let noItemLabel = UILabel() //no need to set frame.
+            noItemLabel.textAlignment = .center
+            noItemLabel.textColor = .white
+            noItemLabel.numberOfLines = 0
+            noItemLabel.text = NSLocalizedString("No data Found", comment: "No data Found")
+            tableView.backgroundView = noItemLabel
+            tableView.separatorStyle = .none
+        }
+        else{
+            tableView.separatorStyle = .singleLine
+        }
+        tableView.backgroundView?.isHidden = !self.homedata.isEmpty
         return self.homedata.count;
     }
     
@@ -234,9 +277,9 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
             
         }
         
-        if dict.value(forKey: "target") != nil
+        if dict.value(forKey: "charity_name") != nil
         {
-            let str = "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)")) PLEDGE TO NATIONAL FEDERATION OF THE BLIND."
+            let str = "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)")) PLEDGE TO \(dict.value(forKey: "charity_name")!)."
             let attributedString = NSMutableAttributedString(string:str)
             let range = (str as NSString).range(of: "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)"))")
             attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.hexa("ef3644", alpha: 1.0), range: range)
@@ -244,6 +287,10 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
 
             cell?.desclbl.attributedText = attributedString;
             
+        }
+        else{
+            let attributedString = NSMutableAttributedString(string:"")
+            cell?.desclbl.attributedText = attributedString;
         }
         
         setBorderToView(view: (cell?.frontimage)!, color: UIColor.white, width: 1);
