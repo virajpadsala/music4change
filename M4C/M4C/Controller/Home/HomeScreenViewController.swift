@@ -21,7 +21,7 @@ class HomeScreenViewController: UIViewController, UITextFieldDelegate, SWRevealV
     var strBrowse = String()
     var URLHOME = String()
 
-    
+    var dictMusicDetail = NSDictionary()
     
     var hud = MBProgressHUD()
     var arrHomeScreenList = NSMutableArray()
@@ -48,6 +48,7 @@ class HomeScreenViewController: UIViewController, UITextFieldDelegate, SWRevealV
         if self.revealViewController() != nil {
             
             self.revealViewController().delegate = self
+            self.revealViewController() .panGestureRecognizer().isEnabled = true
             btnMenu.addTarget(self.revealViewController(), action:#selector(SWRevealViewController.revealToggle(_:)) , for:.touchUpInside)
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
             
@@ -198,6 +199,9 @@ class HomeScreenViewController: UIViewController, UITextFieldDelegate, SWRevealV
         if segue.identifier == "Search" {
             let vcSearch = segue.destination as! SearchScreenViewController
             vcSearch.data = FirstTableArray
+        }else if segue.identifier == "Music" {
+            let vcDetail = segue.destination as! PlayMusicScreenViewController
+            vcDetail.dictMusicDetail = dictMusicDetail
         }
         
     }
@@ -229,7 +233,7 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
             noItemLabel.textAlignment = .center
             noItemLabel.textColor = .white
             noItemLabel.numberOfLines = 0
-            noItemLabel.text = NSLocalizedString("No data Found", comment: "No data Found")
+            noItemLabel.text = NSLocalizedString("", comment: "No data Found")
             tableView.backgroundView = noItemLabel
             tableView.separatorStyle = .none
         }
@@ -277,7 +281,7 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
             
         }
         
-        if dict.value(forKey: "charity_name") != nil
+        if dict.value(forKey: "charity_name") != nil && dict.value(forKey: "charity_name") as! String != ""
         {
             let str = "$\(setcurrencyWithoutSymbol(price: "\(dict.value(forKey: "tip")!)")) PLEDGE TO \(dict.value(forKey: "charity_name")!)."
             let attributedString = NSMutableAttributedString(string:str)
@@ -300,6 +304,16 @@ extension HomeScreenViewController:UITableViewDataSource,UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.size.width * 17/16;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.isSearched{
+            dictMusicDetail = homesearchdata[indexPath.row]
+        }
+        else{
+            dictMusicDetail = homedata[indexPath.row]
+        }
+        self .performSegue(withIdentifier: "Music", sender: self);
     }
     
 }

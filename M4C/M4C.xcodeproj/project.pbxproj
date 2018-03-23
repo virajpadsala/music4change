@@ -23,6 +23,8 @@
 		4B950389206104330018FC76 /* MenuListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B950388206104330018FC76 /* MenuListTableViewCell.swift */; };
 		4B95038B206116980018FC76 /* HomeNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B95038A206116980018FC76 /* HomeNavigationViewController.swift */; };
 		EEAD12D0CC58784025413E7C /* Pods_M4C.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4615BEBDE3BF4A6DA8495DBB /* Pods_M4C.framework */; };
+		F818DC08206538AD004FC21A /* Baby Be Mine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F818DC06206538AD004FC21A /* Baby Be Mine.mp3 */; };
+		F818DC09206538AD004FC21A /* PlayMusicScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818DC07206538AD004FC21A /* PlayMusicScreenViewController.swift */; };
 		F84C3FC02060E74C0014EC76 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */; };
 		F8E4C4DE2057A408006DACA8 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */; };
 		F8E4C4DF2057A408006DACA8 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E4C4D32057A407006DACA8 /* NSObject.swift */; };
@@ -64,6 +66,8 @@
 		4B950388206104330018FC76 /* MenuListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListTableViewCell.swift; sourceTree = "<group>"; };
 		4B95038A206116980018FC76 /* HomeNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationViewController.swift; sourceTree = "<group>"; };
 		9F44E836B09FAB0185586C6F /* Pods-M4C.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-M4C.release.xcconfig"; path = "Pods/Target Support Files/Pods-M4C/Pods-M4C.release.xcconfig"; sourceTree = "<group>"; };
+		F818DC06206538AD004FC21A /* Baby Be Mine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Baby Be Mine.mp3"; sourceTree = "<group>"; };
+		F818DC07206538AD004FC21A /* PlayMusicScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayMusicScreenViewController.swift; sourceTree = "<group>"; };
 		F84C3FBF2060E74C0014EC76 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		F8E4C4D22057A407006DACA8 /* CustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		F8E4C4D32057A407006DACA8 /* NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
@@ -188,6 +192,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F818DC05206538AD004FC21A /* Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				F818DC06206538AD004FC21A /* Baby Be Mine.mp3 */,
+				F818DC07206538AD004FC21A /* PlayMusicScreenViewController.swift */,
+			);
+			path = "Music Player";
+			sourceTree = "<group>";
+		};
 		F84C3FBE2060E6EF0014EC76 /* Side Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +214,7 @@
 		F8E4C4CE2057A383006DACA8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F818DC05206538AD004FC21A /* Music Player */,
 				F84C3FBE2060E6EF0014EC76 /* Side Menu */,
 				2F6A84A82054E8AA001F5B80 /* Login */,
 				2F6A84AC2054F17B001F5B80 /* Home */,
@@ -314,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F6A84972054E6C6001F5B80 /* LaunchScreen.storyboard in Resources */,
+				F818DC08206538AD004FC21A /* Baby Be Mine.mp3 in Resources */,
 				2F6A84942054E6C6001F5B80 /* Assets.xcassets in Resources */,
 				4B950383206101800018FC76 /* SideMenu.plist in Resources */,
 				2F6A84922054E6C6001F5B80 /* Main.storyboard in Resources */,
@@ -401,6 +416,7 @@
 				4B1C31282057C68400A7F49B /* CommanUntil.swift in Sources */,
 				F8E4C4E42057A409006DACA8 /* Alertview.swift in Sources */,
 				F8E4C4EF2057A418006DACA8 /* GlobalConstant.swift in Sources */,
+				F818DC09206538AD004FC21A /* PlayMusicScreenViewController.swift in Sources */,
 				4B11764A205F723B00451CBE /* SearchScreenViewController.swift in Sources */,
 				2F6A84A52054E894001F5B80 /* LoginScreenViewController.swift in Sources */,
 				F8E4C4E02057A409006DACA8 /* UIFonts.swift in Sources */,

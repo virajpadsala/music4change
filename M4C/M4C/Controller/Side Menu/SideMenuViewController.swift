@@ -48,7 +48,13 @@ class SideMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnDologin(_ sender: Any) {
+        self.revealViewController() .revealToggle(animated: true)
+        self.revealViewController() .panGestureRecognizer().isEnabled = false
 
+        self.performSegue(withIdentifier: "login", sender: self)
+    }
+    
     
     // MARK: - Navigation
 
